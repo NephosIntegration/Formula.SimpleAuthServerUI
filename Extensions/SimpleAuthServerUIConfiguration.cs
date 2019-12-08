@@ -12,25 +12,18 @@ namespace Formula.SimpleAuthServerUI
 {
     public static class SimpleAuthServerUIConfiguration
     {
-        public static IServiceCollection AddSimpleAuthServerUI(this IServiceCollection services, IOpenIdConnectConfig openIdConnectConfig = null)
+        public static IServiceCollection AddSimpleAuthServerUI(this IServiceCollection services)
         {
             services.AddControllersWithViews();
             
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
+            
             var builder = services.AddAuthentication(options => {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            if (openIdConnectConfig == null) openIdConnectConfig = OpenIdConnectConfigDemo.Get();
-
-            var oidcServers = openIdConnectConfig.GetExternalOpenIdConnectServers();
-            foreach(var server in oidcServers)
-            {
-                builder.AddOpenIdConnect(server.Name, server.Options);
-            }
 
             return services;
         }
