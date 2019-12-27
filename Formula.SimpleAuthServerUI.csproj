@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Formula.SimpleMembership\Formula.SimpleMembership.csproj" />
+    <ProjectReference Include="..\Formula.SimpleAuthServer\Formula.SimpleAuthServer.csproj" />
+    <ProjectReference Include="..\Formula.SimpleAPI\Formula.SimpleAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
