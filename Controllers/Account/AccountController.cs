@@ -145,7 +145,14 @@ namespace Formula.SimpleAuthServerUI
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
 
-            return View("LoggedOut", vm);
+            if (vm.PostLogoutRedirectUri != null) 
+            {
+                return HandleReturnUrl(URLTrustType.Native, vm.PostLogoutRedirectUri);
+            }
+            else
+            {
+                return View("LoggedOut", vm);
+            }
         }
 
     }
