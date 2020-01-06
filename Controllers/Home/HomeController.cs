@@ -28,6 +28,9 @@ namespace Formula.SimpleAuthServerUI
 
         public IActionResult Index()
         {
+            return View();
+
+            /*
             if (_environment.IsDevelopment())
             {
                 // only show in development
@@ -36,6 +39,7 @@ namespace Formula.SimpleAuthServerUI
 
             _logger.LogInformation("Homepage is disabled in production. Returning 404.");
             return NotFound();
+            */
         }
 
         /// <summary>
